@@ -159,8 +159,13 @@ Get response from producer-service : "hello consumer, I am producer-service-dm-d
 ```
 
 # How to integrate swagger in k8s
+## config
 Add the base-url configuration for swagger's host in `application-k8s.properties`, like consumer-service as follow:
 ```text
 # swagger configuration
 springfox.documentation.swagger.v2.host=shf.boot.com/consumer-service
 ```
+
+## test
+Enter `http://shf.boot.com/consumer-service/swagger-ui.html` to require swagger-ui.html website of consumer-service:
+![avatar](./doc/img/swagger.jpg)
