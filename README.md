@@ -105,12 +105,12 @@ spring.profiles.active=@profileActive@
 * `application-dev.properties` for the development phase, config **endpoints** of external services:
 ```text
 # producer service
-external.services.producer-service.address=127.0.0.1:${external.services.producer-service.port:8080}
+external.services.producer-service.address=127.0.0.1:8080
 ``` 
 * `application-k8s.properties` for the deployment phase(includes ci,qa,release,prod), config **serviceName** of external services: 
 ```text
 # producer service
-external.services.producer-service.address=producer-service-svc:${external.services.producer-service.port:8080}
+external.services.producer-service.address=producer-service-svc
 ```
 
 # Debug IN IDEA
@@ -122,7 +122,7 @@ Then we can run kube-consumer-service and kube-priducer-service by each respecti
 ## Test
 * INPUT
 ```bash
-curl localhost:8081/call/producer-service
+curl localhost:8081/hello/call/producer-service
 ```
 * OUTPUT
 ```text
@@ -150,10 +150,17 @@ cd kubernetes & kubectl apply -f .
 
 ## Test
 ```bash
-curl shf.boot.com/consumer-service/call/producer-service
+curl shf.boot.com/consumer-service/hello/call/producer-service
+
 ```
 * OUTPUT
 ```text
 Get response from producer-service : "hello consumer, I am producer-service-dm-ddbb6477d-j8rvn(hostname)"
 ```
 
+# How to integrate swagger in k8s
+Add the base-url configuration for swagger's host in `application-k8s.properties`, like consumer-service as follow:
+```text
+# swagger configuration
+springfox.documentation.swagger.v2.host=shf.boot.com/consumer-service
+```
