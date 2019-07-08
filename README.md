@@ -165,6 +165,7 @@ Add the base-url configuration for swagger's host in `application-k8s.properties
 # swagger configuration
 springfox.documentation.swagger.v2.host=shf.boot.com/consumer-service
 ```
+See more in `springfox.documentation.swagger2.web.Swagger2Controller`.
 
 ## test
 Enter `http://shf.boot.com/consumer-service/swagger-ui.html` to require swagger-ui.html website of consumer-service:
